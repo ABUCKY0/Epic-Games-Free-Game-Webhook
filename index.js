@@ -55,7 +55,7 @@ epicFreeGames.getGames().then(res => {
           ? (game.description.length > 1024 ? game.description.slice(0, 1021) + "…" : game.description)
           : "No description", false)
         .setImage(titleimg)
-        .setText(`@everyone ${game.title} is now free at https://store.epicgames.com/en-US/p/${game.urlSlug}`);
+        .setText(`@everyone ${game.title} is now free until ${new Date(game.promotions.promotionalOffers[0].promotionalOffers[0].endDate).toLocaleString("en-US", { timeZone: 'America/Chicago', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })} CST`);
       
         // embeds.push(embed);
         hook.send(embed);
