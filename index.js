@@ -1,6 +1,7 @@
 const { EpicFreeGames } = require('epic-free-games');
 const fs = require('fs'); 
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
+require('dotenv').config();
 
 const epicFreeGames = new EpicFreeGames({ country: 'US', locale: 'en-US', includeAll: true });
 
