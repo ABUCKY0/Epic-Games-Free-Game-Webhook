@@ -6,13 +6,12 @@ const epicFreeGames = new EpicFreeGames({ country: 'US', locale: 'en-US', includ
 
 let gamelist = [];
 let hook = null;
-fs.readFile('webhookurl.txt', 'utf-8', (err, data) => {
-  if (err) {
-    throw err;
-  }
-  hook = new Webhook(data);
-  hook.setAvatar("https://i.pcmag.com/imagery/articles/01vhCqYOCQxEuue1pmPtp5F-1..v1670432578.jpg")
-});
+const webhookUrl = process.env.WEBHOOK_URL;
+if (!webhookUrl) {
+  throw new Error("WEBHOOK_URL environment variable not set.");
+}
+hook = new Webhook(webhookUrl);
+
 epicFreeGames.getGames().then(res => {
   fs.readFile('ids.txt', 'utf-8', (err, data) => {
     if (err) {
