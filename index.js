@@ -9,8 +9,10 @@ let hook = null;
 const webhookUrl = process.env.WEBHOOK_URL;
 if (!webhookUrl) {
   throw new Error("WEBHOOK_URL environment variable not set.");
+
 }
 hook = new Webhook(webhookUrl);
+hook.setAvatar("https://i.pcmag.com/imagery/articles/01vhCqYOCQxEuue1pmPtp5F-1..v1670432578.jpg");
 
 epicFreeGames.getGames().then(res => {
   fs.readFile('ids.txt', 'utf-8', (err, data) => {
